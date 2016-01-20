@@ -351,7 +351,6 @@ a.anchor-link {
 <p>Guaranteed memory safety</p>
 <p>No data races</p>
 <p>Close to the metal</p>
-<p>Trait-based generics</p>
 <p>Seamless C interop</p>
 
 </div>
@@ -417,7 +416,10 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="c1">// Type Inference</span>
 
-<span class="k">let</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
+    <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Hello, {}&quot;</span><span class="p">,</span> <span class="n">greeting</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -454,8 +456,10 @@ a.anchor-link {
 
 <span class="c1">// By default, all bindings are immutable</span>
 
-<span class="k">let</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
-<span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;Foo&quot;</span><span class="p">;</span> <span class="c1">// COMPILE ERROR</span>
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;Foo&quot;</span><span class="p">;</span> <span class="c1">// COMPILE ERROR</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -468,8 +472,10 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="c1">// Variables must explicitly be marked as mutable</span>
 
-<span class="k">let</span> <span class="k">mut</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
-<span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;Foo&quot;</span> <span class="c1">// Happy compiler</span>
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s">&quot;Foo&quot;</span> <span class="c1">// Happy compiler</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -482,10 +488,12 @@ a.anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="c1">// However, re-binding is possible:</span>
 
-<span class="k">let</span> <span class="k">mut</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">Bar</span><span class="o">::</span><span class="n">new</span><span class="p">();</span>
-<span class="n">foo</span><span class="p">.</span><span class="n">some_property</span> <span class="o">=</span> <span class="s">&quot;some value&quot;</span><span class="p">;</span>
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">Bar</span><span class="o">::</span><span class="n">new</span><span class="p">();</span>
+    <span class="n">foo</span><span class="p">.</span><span class="n">some_property</span> <span class="o">=</span> <span class="s">&quot;some value&quot;</span><span class="p">;</span>
 
-<span class="k">let</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">finalize</span><span class="p">();</span>  <span class="c1">// previous mutable binding replaced with immutable binding</span>
+    <span class="k">let</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">.</span><span class="n">finalize</span><span class="p">();</span>  <span class="c1">// previous mutable binding replaced with immutable binding</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -764,7 +772,18 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="References-&amp;-Borrowing">References &amp; Borrowing<a class="anchor-link" href="#References-&amp;-Borrowing">&#182;</a></h3>
+<h2 id="References-&amp;-Borrowing">References &amp; Borrowing<a class="anchor-link" href="#References-&amp;-Borrowing">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="rust-nomicon-quote.png" alt="Thats-the-entire-model"></p>
+<p><a href="https://twitter.com/QEDunham/status/689596292029251584]">source</a></p>
+
 </div>
 </div>
 </div></section><section>
@@ -784,7 +803,7 @@ a.anchor-link {
 <li>A mutable reference cannot be aliased</li>
 </ul>
 <p>That's it. That's the entire model.</p>
-<p>[source: <a href="https://twitter.com/QEDunham/status/689596292029251584">https://twitter.com/QEDunham/status/689596292029251584</a>]</p>
+<p><a href="https://doc.rust-lang.org/nightly/nomicon/references.html">source</a></p>
 
 </div>
 </div>
@@ -853,7 +872,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Traits">Traits<a class="anchor-link" href="#Traits">&#182;</a></h3>
+<h2 id="Traits">Traits<a class="anchor-link" href="#Traits">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -918,7 +937,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Generics">Generics<a class="anchor-link" href="#Generics">&#182;</a></h3>
+<h2 id="Generics">Generics<a class="anchor-link" href="#Generics">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -959,7 +978,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Error-Handling">Error Handling<a class="anchor-link" href="#Error-Handling">&#182;</a></h3>
+<h2 id="Error-Handling">Error Handling<a class="anchor-link" href="#Error-Handling">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -1048,7 +1067,88 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Crates-&amp;-Modules">Crates &amp; Modules<a class="anchor-link" href="#Crates-&amp;-Modules">&#182;</a></h3>
+<h2 id="Concurrency">Concurrency<a class="anchor-link" href="#Concurrency">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span class="k">use</span> <span class="n">std</span><span class="o">::</span><span class="n">thread</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">std</span><span class="o">::</span><span class="n">sync</span><span class="o">::</span><span class="n">mpsc</span><span class="o">::</span><span class="n">channel</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">let</span> <span class="n">N</span> <span class="o">=</span> <span class="m">10</span><span class="p">;</span>
+
+    <span class="k">let</span> <span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">rx</span><span class="p">)</span> <span class="o">=</span> <span class="n">channel</span><span class="p">();</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="m">0.</span><span class="p">.</span><span class="m">10</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">tx</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+        <span class="n">thread</span><span class="o">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">move</span> <span class="o">||</span> <span class="p">{</span>
+            <span class="n">data</span> <span class="o">+=</span> <span class="m">1</span><span class="p">;</span> <span class="c1">// COMPILE ERROR</span>
+            <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="n">N</span> <span class="p">{</span>
+                <span class="k">let</span> <span class="n">send_result</span> <span class="o">=</span> <span class="n">tx</span><span class="p">.</span><span class="n">send</span><span class="p">(());</span>
+            <span class="p">}</span>
+        <span class="p">})</span>    
+    <span class="p">}</span>
+
+    <span class="k">match</span> <span class="n">rx</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Ok</span><span class="p">(())</span> <span class="o">=&gt;</span> <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;successfully received ()&quot;</span><span class="p">),</span>
+        <span class="n">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Error!&quot;</span><span class="p">),</span>
+        <span class="n">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Error!&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span class="k">use</span> <span class="n">std</span><span class="o">::</span><span class="n">thread</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">std</span><span class="o">::</span><span class="n">sync</span><span class="o">::</span><span class="p">{</span><span class="n">Arc</span><span class="p">,</span> <span class="n">Mutex</span><span class="p">};</span>
+<span class="k">use</span> <span class="n">std</span><span class="o">::</span><span class="n">sync</span><span class="o">::</span><span class="n">mpsc</span><span class="o">::</span><span class="n">channel</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Arc</span><span class="o">::</span><span class="n">new</span><span class="p">(</span><span class="n">Mutex</span><span class="o">::</span><span class="n">new</span><span class="p">(</span><span class="m">0</span><span class="p">));</span>
+    <span class="k">let</span> <span class="n">N</span> <span class="o">=</span> <span class="m">10</span><span class="p">;</span>
+
+    <span class="k">let</span> <span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">rx</span><span class="p">)</span> <span class="o">=</span> <span class="n">channel</span><span class="p">();</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="n">in</span> <span class="m">0.</span><span class="p">.</span><span class="m">10</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">tx</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">clone</span><span class="p">(),</span> <span class="n">tx</span><span class="p">.</span><span class="n">clone</span><span class="p">());</span> <span class="c1">// Arc refcount gets +1</span>
+        <span class="n">thread</span><span class="o">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">move</span> <span class="o">||</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="k">mut</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">lock</span><span class="p">().</span><span class="n">unwrap</span><span class="p">();</span> <span class="c1">// Should do actual error handling here</span>
+            <span class="o">*</span><span class="n">data</span> <span class="o">+=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="k">if</span> <span class="o">*</span><span class="n">data</span> <span class="o">==</span> <span class="n">N</span> <span class="p">{</span>
+                <span class="k">let</span> <span class="n">send_result</span> <span class="o">=</span> <span class="n">tx</span><span class="p">.</span><span class="n">send</span><span class="p">(());</span>
+            <span class="p">}</span>
+        <span class="p">});</span> 
+    <span class="p">}</span>
+
+    <span class="k">match</span> <span class="n">rx</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Ok</span><span class="p">(())</span> <span class="o">=&gt;</span> <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;successfully received ()&quot;</span><span class="p">),</span>
+        <span class="n">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Error!&quot;</span><span class="p">),</span><span class="n">t</span>
+        <span class="n">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Error!&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Crates-&amp;-Modules">Crates &amp; Modules<a class="anchor-link" href="#Crates-&amp;-Modules">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -1273,8 +1373,9 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span class="c1">// src/lib.rs</span>
-<span class="c1">//! This is crate-level documentation. Here is where you would give a general overview of your</span>
-<span class="c1">//! crate, along with any background information that could be useful (RFCs, etc)</span>
+<span class="c1">//! This is crate-level documentation. Here is where you would give a</span>
+<span class="c1">//! general overview of your crate, along with any background </span>
+<span class="c1">//! information that could be useful (RFCs, etc)</span>
 
 <span class="c1">/// This is specifically for the item that comes after it. </span>
 <span class="c1">/// Here is where you would put information about `SomeDataStructure`</span>
@@ -1286,8 +1387,8 @@ a.anchor-link {
 
     <span class="c1">/// You can include examples with your code, that will show up in the </span>
     <span class="c1">/// documentation. The best part of this is that the examples are compiled</span>
-    <span class="c1">/// and can be run with your tests. So, if the example code in your documentation</span>
-    <span class="c1">/// goes out-of-sync with your code, your tests will fail!</span>
+    <span class="c1">/// and can be run with your tests. So, if the example code in your </span>
+    <span class="c1">/// documentation goes out-of-sync with your code, your tests will fail!</span>
     <span class="c1">///</span>
     <span class="c1">/// # Example</span>
     <span class="c1">///</span>
@@ -1344,11 +1445,25 @@ a.anchor-link {
 <li>Macros</li>
 <li>Conditional compliation</li>
 <li>cargo build scripts</li>
+<li>FFI</li>
 <li>Probably a lot more</li>
 </ul>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
